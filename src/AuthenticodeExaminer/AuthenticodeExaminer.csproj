@@ -1,19 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Authors>Kevin Jones</Authors>
-    <PackageTags>authenticode;codesign</PackageTags>
-    <PackageProjectUrl>https://github.com/vcsjones/AuthenticodeExaminer</PackageProjectUrl>
-    <Version>0.4.0</Version>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-    <RuntimeIdentifiers>win-x64;win-x86</RuntimeIdentifiers>
-    <Description>A Windows library for verifying and inspecting Authenticode signed files.</Description>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<Authors>YourName</Authors>
+		<PackageTags>authenticode;signing</PackageTags>
+		<PackageProjectUrl>https://github.com/waelarbi/AuthencitodeExaminer.Fork.Signed</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/waelarbi/AuthencitodeExaminer.Fork.Signed</RepositoryUrl>
+		<PackageId>AuthenticodeExaminer.Fork.Signed</PackageId>
+		<!-- NEW ID -->
+		<Version>0.4.0.1</Version>
+		<!-- Different version -->
+		<Description>Strongly-signed fork of AuthenticodeExaminer for inspecting Authenticode signatures.</Description>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<Nullable>enable</Nullable>
+
+		<!-- ✳️ Strong Name Signing -->
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>AuthenticodeExaminer.snk</AssemblyOriginatorKeyFile>
+		<PublicSign Condition="'$(OS)' != 'Windows_NT'">true</PublicSign>
+	</PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
     <PackageReference Include="System.Security.Cryptography.Pkcs" Version="8.0.1" />
@@ -25,5 +30,5 @@
   <ItemGroup>
     <PackageReference Include="System.Memory" Version="4.6.0" />
   </ItemGroup>
-  
+
 </Project>
